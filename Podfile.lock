@@ -1,3 +1,45 @@
-PODFILE CHECKSUM: 149546b8ea97a2fa038b0bc340623a8b39560355
+PODS:
+  - Alamofire (4.8.2)
+  - Kingfisher (5.3.1)
+  - KRActivityIndicatorView (3.0.0)
+  - KRProgressHUD (3.4.0):
+    - KRActivityIndicatorView (= 3.0.0)
+  - RxCocoa (4.5.0):
+    - RxSwift (>= 4.4.2, ~> 4.4)
+  - RxSwift (4.5.0)
+  - SwiftLint (0.31.0)
+  - SwiftyBeaver (1.7.0)
+
+DEPENDENCIES:
+  - Alamofire
+  - Kingfisher
+  - KRProgressHUD
+  - RxCocoa
+  - RxSwift
+  - SwiftLint
+  - SwiftyBeaver
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Alamofire
+    - Kingfisher
+    - KRActivityIndicatorView
+    - KRProgressHUD
+    - RxCocoa
+    - RxSwift
+    - SwiftLint
+    - SwiftyBeaver
+
+SPEC CHECKSUMS:
+  Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
+  Kingfisher: d9e7e0b209b59b8f9873aa2f37654e81a7beea51
+  KRActivityIndicatorView: c414000730a6f4969eeb354bee4f2aebc89c2c2e
+  KRProgressHUD: 79c8703f82179fe34b3602f10b30726f887983fa
+  RxCocoa: cbf70265dc65a981d4ac982e513c10cf23df24a0
+  RxSwift: f172070dfd1a93d70a9ab97a5a01166206e1c575
+  SwiftLint: 7a0227733d786395817373b2d0ca799fd0093ff3
+  SwiftyBeaver: 4cc0080d2e23f980652e28978db11a5c9da39165
+
+PODFILE CHECKSUM: 4279ea0cf466b47137fc397e8d03d4b9a562b16d
 
 COCOAPODS: 1.6.1

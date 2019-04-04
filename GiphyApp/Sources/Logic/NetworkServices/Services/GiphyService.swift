@@ -8,6 +8,11 @@
 
 import Foundation
 
+protocol GiphyServiceProtocol: class {
+    func trendingImages(pageInfo: PageInfo,
+                        completionHandler: @escaping ServiceResponseHandler<GiphyServiceResponse>)
+}
+
 // MARK: - Giphy Service
 final class GiphyService: Service {
     init() {

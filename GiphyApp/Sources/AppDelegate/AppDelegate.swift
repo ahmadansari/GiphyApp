@@ -19,6 +19,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //App Settings
         configureAppSettings()
         
+        //Launch Controller
+        let viewController = TrendingModuleBuilder().build()
+        self.window?.rootViewController = viewController
+        self.window?.makeKeyAndVisible()
+        
         return true
     }
 

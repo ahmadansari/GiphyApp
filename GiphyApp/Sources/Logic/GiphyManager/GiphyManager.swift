@@ -18,15 +18,20 @@ class GiphyManager {
         
     }
     
-    func fetchTrendingImages(_ pageInfo: PageInfo) {
+    func fetchTrendingImages(_ pageInfo: PageInfo, _ completionHandler: @escaping (GiphyServiceResponse?, Error?) -> Void) {
         let service = GiphyService()
+        completionHandler(nil, nil)
+        return
+        
         service.trendingImages(pageInfo: pageInfo) { (response, error) in
             if error != nil {
-                print(error)
+                completionHandler(nil, error)
             } else {
                 if let images = response?.imagesList {
-                    GiphyImage.saveImages(images,
-                                          context: CoreDataStack.defaultStack.newBackgroundContext())
+                    let context = CoreDataStack.defaultStack.newBackgroundContext()
+                    GiphyImage.saveImages(images, context: context, completion: { (error) in
+                        completionHandler(response, error)
+                    })
                 }
             }
         }

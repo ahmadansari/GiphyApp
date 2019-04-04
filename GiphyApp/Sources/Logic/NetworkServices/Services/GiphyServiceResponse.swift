@@ -34,15 +34,25 @@ struct ImageData: Codable {
     let id: String
     let title: String?
     let images: Images
+    let trendingDatetime: String?
+    
+    private enum CodingKeys: String, CodingKey {
+        case id
+        case title
+        case images
+        case trendingDatetime = "trending_datetime"
+    }
 }
 
 struct Images: Codable {
     let original: OriginalImage
     let preview: PreviewImage
+    let downsized: DownsizedImage
     
     private enum CodingKeys: String, CodingKey {
         case original
         case preview = "preview_gif"
+        case downsized
     }
 }
 
@@ -51,5 +61,9 @@ struct OriginalImage: Codable {
 }
 
 struct PreviewImage: Codable {
+    let url: String?
+}
+
+struct DownsizedImage: Codable {
     let url: String?
 }

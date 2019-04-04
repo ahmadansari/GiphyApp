@@ -29,8 +29,18 @@ extension GiphyImage: DataTransferProtocol {
 //Data Persistence
 extension GiphyImage {
     
-    class func saveImages(_ images: [ImageData], context: NSManagedObjectContext) {
+    class func saveImages(_ images: [ImageData], context: NSManagedObjectContext,
+                          completion:@escaping (Error?) -> Void) {
         context.perform {
+            
+            //Date Type
+            let convertToDate: ((String?) -> NSDate?) = { timestamp in
+                guard let timestamp = timestamp else { return nil }
+                let formatter = DateFormatter()
+                formatter.dateFormat = "YYYY-MM-dd HH:mm:ss"
+                return formatter.date(from: timestamp) as NSDate?
+            }
+            
             for imageData in images {
                 let id: String = imageData.id
                 let request: NSFetchRequest = GiphyImage.fetchRequest()
@@ -47,8 +57,13 @@ extension GiphyImage {
                 image?.title = imageData.title
                 image?.originalURL = imageData.images.original.url
                 image?.previewURL = imageData.images.preview.url
+                image?.downsizedURL = imageData.images.downsized.url
+                image?.trendingDate = convertToDate(imageData.trendingDatetime)
+                image?.cachedDate = Date() as NSDate
             }
-            CoreDataStack.saveContext(context)
+            CoreDataStack.saveContext(context, { (error) in
+                completion(error)
+            })
         }
     }
     

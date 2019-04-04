@@ -12,7 +12,7 @@ class GiphyImageDTO: NSObject {
     
     private weak var image: GiphyImage?
     
-    init(image: GiphyImage) {
+    init(image: GiphyImage? = nil) {
         super.init()
         self.image = image
     }
@@ -36,6 +36,13 @@ extension GiphyImageDTO {
     
     func originalURL() -> URL? {
         guard let url = image?.originalURL else {
+            return nil
+        }
+        return URL(string: url)
+    }
+    
+    func downsizedURL() -> URL? {
+        guard let url = image?.downsizedURL else {
             return nil
         }
         return URL(string: url)
